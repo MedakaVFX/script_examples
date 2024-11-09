@@ -8,7 +8,7 @@ Version:
     * Author : Tatsuya Yamagishi <tayama27@gmail.com>
 
 Examples:
-    >>> OpenImageIO-Arnold 2.4.1.1dev : maketx V:\22013_D_WH\work_3d\prism2\03_Production\Assets\lookdev\ColorchartsRGB\Textures\colorchecker\v0001\colorchecker_acescg_v0001.exr --opaque-detect --constant-color-detect --monochrome-detect --fixnan box3 --oiio --attrib tiff:half 1 -v --unpremult --oiio -u --colorconvert Raw "scene-linear Rec 709/sRGB" --format exr
+    >>> OpenImageIO-Arnold 2.4.1.1dev : maketx <filepath>\colorchecker_acescg_v0001.exr --opaque-detect --constant-color-detect --monochrome-detect --fixnan box3 --oiio --attrib tiff:half 1 -v --unpremult --oiio -u --colorconvert Raw "scene-linear Rec 709/sRGB" --format exr
  
 Release Note:
     * v0.0.1 2024-10-21 Tatsuya Yamagishi
@@ -28,7 +28,8 @@ import subprocess
 
 
 """ Set Texture Root Path """
-TEXTURE_ROOT_PATH = Path(r'F:\Users\yamagishi\Dropbox\develop\usd_intro\050_asset_builder\assets\ColorChecker\maps')
+ROOT = r'<filepath>'
+TEXTURE_ROOT_PATH = Path(rf'{ROOT}\assets\ColorChecker\maps')
 
 #=======================================#
 # SETTINGS
@@ -42,7 +43,7 @@ COLORSPACE_DICT = {
 FILE_FORMAT = 'exr' # or tif
 FILTER_IMAGE_FILE = re.compile(r'.+\.(bmp|cin|dds|dpx|fits|hdr|ico|iff|jpeg|jpg|exr|png|pnm|psd|rla|sgi|pic|tga|tif|tiff|zfile)')
 MAKETX_EXE = r'C:\Program Files\Autodesk\Arnold\maya2025\bin\maketx.exe'
-OCIO_CONFIG = r'F:\Users\yamagishi\Dropbox\develop\usd_intro\050_asset_builder\ocio\custom-v0.0.1_aces-v1.3_ocio-v2.1.ocio'
+OCIO_CONFIG = rf'{ROOT}\ocio\custom-v0.0.1_aces-v1.3_ocio-v2.1.ocio'
 OPTION = '--opaque-detect --constant-color-detect --monochrome-detect --fixnan box3 --oiio --attrib tiff:half 1 -v --checknan --unpremult --oiio --colorconvert'
 RENDER_COLORSPACE = 'ACEScg'
 
